@@ -1,0 +1,80 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!! ST TERMINAL CONFIGURATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! These are all possible options, presented with default values.
+! xst will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+! These options only take effect on startup.
+st.termname:     st-256color
+! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
+st.shell:        /bin/zsh
+
+! The following options options can be reloaded via USR1 signal.
+st.font:              Fantasque Sans Mono:pixelsize=14:antialias=true:autohint=true;
+st.borderpx:          10
+! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
+st.cursorshape:       4
+! thickness of underline and bar cursors
+st.cursorthickness:   2
+! 0: normal blinking, 1: leave cursor border and blink with cursors background
+
+st.cursorblinkstyle:  2
+! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
+st.cursorblinkontype: 1
+st.bold_font:         0
+st.xfps:              120
+st.actionfps:         30
+! Amount of lines scrolled
+st.mouseScrollLines:  2
+! Kerning / character bounding-box height multiplier
+
+! Kerning / character bounding-box width multiplier
+
+! blinking timeout for terminal and cursor blinking (0 disables)
+st.blinktimeout:      800
+! bell volume. Value between -100 and 100. (0 disables)
+st.bellvolume:        0
+! this is a char that is exposed like so: `printf '\033[z'`
+! st.prompt_char:       $
+! This option is can be preedit style. Available values: `root` `overthespot` (Default taken `root`)
+st.imstyle:           root
+
+! opacity==255 means what terminal will be not transparent, 0 - fully transparent
+st.opacity:      100
+! Defaults taken from base16-twilight colorscheme.
+
+*background:	#1D1F28
+*foreground:	#FDFDFD
+*cursorColor:	#C574DD
+*color0:	#282A36
+*color1:	#F37F97
+*color2:	#5ADECD
+*color3:	#F2A272
+*color4:	#8897F4
+*color5:	#C574DD
+*color6:	#79E6F3
+*color7:	#FDFDFD
+*color8:	#414458
+*color9:	#FF4971
+*color10:	#18E3C8
+*color11:	#FF8037
+*color12:	#556FFF
+*color13:	#B043D1
+*color14:	#3FDCEE
+*color15:	#BEBEC1
+
+
+! Black color that will not be affected by bold highlighting.
+st.color66: #FF0000
+
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        96
+Xft.hinting:    1
+Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+rofi.color-normal: argb:00000000, #a5c3bb, argb:00000000, #12252d, #a5c3bb
+rofi.color-window: #0e0e10, #000000, #832757
