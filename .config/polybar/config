@@ -17,16 +17,23 @@
 ;==========================================================
 
 [colors]
+
 background = #000
 background-alt = #111
+rosa = #da12e
+abobora = ff300c
+amarelo = f0e100
+blue = #5294e2
 foreground = #FFF
 foreground-alt = #808080
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+vermelho = #CC241D
+branco = #f1f1f1
 
 [bar/top]
-monitor = eDP-1
+monitor = eDP
 width = 100%
 height = 22
 radius = 0.0
@@ -35,33 +42,32 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 0
 line-color = #f00
-border-size = 8
+border-size = 0
 border-color = #000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 1
-
+spacing = 1
 
 
 font-0 = "Fantasque Sans Mono:size=12;1"
 font-1 = "xos4 Terminess Powerline:pixelsize=10;1"
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-3 = "Wuncon Siji:pixelsize=10;1"
-font-4 = "Font Awesome 5 Free:style=Regular:pixelsize=9;1"
-font-5 = "Font Awesome 5 Free:style=Solid:pixelsize=9;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=9;1"
+font-5 = "Font Awesome 5 Free:style=Regular:pixelsize=9;1"
 font-6 = "Font Awesome 5 Brands:pixelsize=9;1"
 
-modules-left = 
-modules-center = i3
-modules-right = 
-
+modules-left = i3 
+modules-center = date time
+modules-right = battery powermenu
 [bar/bottom]
-monitor = eDP-1
+monitor = eDP
 bottom = true
 width = 100%
 height = 27
@@ -143,14 +149,14 @@ wrapping-scroll = false
 
 label-mode-padding = 2
 label-mode-foreground = #FFF
-label-mode-background = #000
+label-mode-background = ${colors.amarelo}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = #FFF
+label-focused-background = ${colors.amarelo}
 label-focused-foreground = #000
-label-focused-overline = #FFF
-label-focused-underline= #FFF
+label-focused-overline = ${colors.amarelo}
+label-focused-underline= ${colors.amarelo}
 label-focused-padding = 2
 label-focused-margin-right = 1
 
@@ -175,18 +181,33 @@ label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+[module/time]
+type = internal/date
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+; Update interval
+interval = 1.0
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+; Format
+time = %I:%M%P
+
+; Label
+label            =  %time%
+label-foreground = ${colors.foreground}
+label-padding    = 1
+
+[module/date]
+type = internal/date
+
+; Update interval
+interval = 1.0
+
+; Format
+date = %A, %d %B
+
+; Label
+label            =  %date%
+label-foreground = ${colors.foreground}
+label-padding    = 1
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -328,21 +349,6 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -407,20 +413,27 @@ full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
+format-charging-foreground = ${colors.branco}
+format-charging-background = #00D30E
+format-charging-padding = 2
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
+format-discharging-foreground = ${colors.branco}
+format-discharging-background = ${colors.abobora}
+format-discharging-padding = 2
 
-format-full-prefix = ""
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.branco}
+format-full-background = ${colors.blue}
+format-full-padding = 2
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.branco}
 
 
 animation-charging-0 = 
@@ -428,7 +441,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.branco}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
@@ -436,7 +449,7 @@ animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-3 = 
 animation-discharging-4 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.branco}
 animation-discharging-framerate = 500
 
 [module/temperature]
@@ -462,10 +475,14 @@ type = custom/menu
 
 expand-right = true
 
-format-spacing = 1
+format-spacing = 0
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.branco}
+label-open-background = ${colors.vermelho}
+label-open-padding = 2
+label-open-margin-left = 0
+label-open-overline=#FFF
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
